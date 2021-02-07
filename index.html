@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jUnlimitmp3 - Convert Your GitHub MP3 to Free Unlimited Audio Storage and Bandwidth </title>
+    <link rel="stylesheet" href="../bootstrap.css">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div id="body">
+        <header>
+            <img src="logo.png" alt="Free Unlimited Audio Storage and Bandwidth " width="300px" srcset="">
+            <h1>jUnlimitmp3</h1>
+            <h3> Free Unlimited Audio Storage and Bandwidth </h3>
+        </header>
+        <div class="container">
+            <br><br><br>
+            <input type="text" name="ghurl" id="ghurl" class="btn btn-outline-warning btn-lg btn-block"
+                placeholder="Enter GitHub MP3 URL">
+            <br><br><br>
+            <button onclick="get(document.getElementById('ghurl').value)"
+                class="btn btn-success btn-lg btn-block">GET</button>
+
+            <div class="audiocont">
+                <h5>Here is a Sample Audio Fetched From :-
+                    <a href="https://github.com/INDIESTUFF/audios/blob/main/tags/About-Me.mp3">
+                        https://github.com/INDIESTUFF/audios/blob/main/tags/About-Me.mp3</a>
+                </h5>
+                <br><br><br>
+                <div class="audio">
+                    <audio controls id="audio">
+                        <source
+                            src="https://cdn.jsdelivr.net/gh/INDIESTUFF/audios/tags/ncs%20top%2050/Can%20You%20Feel%20It.mp3"
+                            type="audio/mp3">
+                    </audio>
+                </div>
+            </div>
+            <div class="code">
+                <code id="code">
+                    
+                </code>
+            </div>
+
+            <div id="about">
+                <h2>You are Getting Unlimited Audio Storage Here</h2>
+                <br>
+                <h5>Even if you <code> delete your audio from GitHub</code>, your audio will still be saved </h5>
+                <br><br>
+                <h5>Just Generate code from Here and you will get <code>Unlimited bandwidth and Storage for Your Audio File</code> </h5>
+                <h5>You Can Also <code>Modify the height and width of iframe </code> According to your Website. </h5>
+                <img src="unlimited.PNG" alt="" srcset="">
+            </div>
+
+            <footer>
+                Copyright @jUnlimitmp3 | 
+                <a href="http://github.com/sh20raj"><div class="github btn btn-block btn-lg btn-outline-info">GitHub</div></a>
+            </footer>
+
+        </div>
+    </div>
+    <script>
+        //var url = "https://github.com/INDIESTUFF/PDFs/blob/main/sample/new/readme.md";
+        document.getElementById('code').innerText = '<iframe src="'+location.href +'?v=INDIESTUFF/audios/tags/About-Me.mp3" width="300px" ></iframe>';
+
+
+        if (getParameterByName('v').length > 5) {
+            play();
+
+            function play() {
+                var url = 'https://cdn.jsdelivr.net/gh/'+getParameterByName('v');
+                document.getElementById('body').innerHTML =
+                    '<div class="audio"><audio style="width : 100% ;" controls id="audio"><source src="' + url + '"type="audio/mp3"></audio></div>';
+            }
+        }
+
+        function get(a) {
+            var url = a;
+            var gurl = url.split('/');
+            console.log(gurl);
+            var newurl = gurl[3] + "/" + gurl[4];
+            for (var i = 7; i < gurl.length; i++) {
+                newurl += "/" + gurl[i] + "";
+            }
+
+            function getcode() {
+                document.getElementById('code').innerText = '<iframe src="'+location.href +'?v='+ newurl + '" width="300px" ></iframe>';
+            }
+            window.newurl = "https://cdn.jsdelivr.net/gh/" + newurl;
+            getcode();
+            document.getElementById('audio').src = window.newurl;
+            return window.url;
+
+
+        }
+
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regexS = "[\\?&]" + name + "=([^&#]*)";
+            var regex = new RegExp(regexS);
+            var results = regex.exec(window.location.href);
+            if (results == null)
+                return "";
+            else
+                return decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+
+    <style>
+        * {
+            margin: ;
+            : 10px;
+        }
+
+        header {
+            background: rgb(230, 240, 201);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .container #ghurl {
+            width: 600px;
+            font-size: 20px;
+        }
+
+        .audiocont {
+            padding: 20px;
+        }
+        #code {
+            display: inline-block;
+            padding: 20px;
+            margin: 10px;
+        }
+        code {
+            background: antiquewhite;
+        }
+        footer {
+            padding: 20px;
+            margin: 20px;
+        }
+    </style>
+</body>
+
+</html>
